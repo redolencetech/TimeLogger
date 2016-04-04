@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace TimeLogger
@@ -14,6 +7,7 @@ namespace TimeLogger
     public partial class Service1 : ServiceBase
     {
         StreamWriter currFile;
+        DateTime now;
         public Service1()
         {
             InitializeComponent();
@@ -21,19 +15,23 @@ namespace TimeLogger
 
         protected override void OnStart(string[] args)
         {
-            DateTime now = DateTime.Now;
+            now = DateTime.Now;
+            build();
             currFile.WriteLine("{0} Startup", now.ToShortTimeString());
+            tmrLog.Interval = 30000;
+            tmrLog.Enabled = true;
         }
 
         protected override void OnStop()
         {
-            DateTime now = DateTime.Now;
+            now = DateTime.Now;
+            build();
             currFile.WriteLine("{0} Shutdown", now.ToShortTimeString());
+            tmrLog.Enabled = false;
         }
 
         public void build()
         {
-            DateTime now = DateTime.Now;
             string currMonth = string.Format("{0:MMMM}", now);
             string currDay = string.Format("{0:dd}", now);
             string filename = string.Format("{0:hhmmss}", now);
@@ -55,13 +53,23 @@ namespace TimeLogger
         {
             if (changeDescription.Reason == SessionChangeReason.SessionLock)
             {
-                //I left my desk
+                now = DateTime.Now;
+                build();
+                currFile.WriteLine("{0} Locked", now.ToShortTimeString());
             }
             else if (changeDescription.Reason == SessionChangeReason.SessionUnlock)
             {
-                //I returned to my desk
+                now = DateTime.Now;
+                build();
+                currFile.WriteLine("{0} Unlocked", now.ToShortTimeString());
             }
         }
 
+        private void tmrLog_Tick(object sender, EventArgs e)
+        {
+            now = DateTime.Now;
+            build();
+            currFile.WriteLine("{0} Still on", now.ToShortTimeString());
+        }
     }
 }
