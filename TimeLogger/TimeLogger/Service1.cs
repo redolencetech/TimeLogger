@@ -15,7 +15,6 @@ namespace TimeLogger
 
         protected override void OnStart(string[] args)
         {
-            now = DateTime.Now;
             build();
             currFile.WriteLine("{0} Startup", now.ToShortTimeString());
             tmrLog.Interval = 30000;
@@ -24,7 +23,6 @@ namespace TimeLogger
 
         protected override void OnStop()
         {
-            now = DateTime.Now;
             build();
             currFile.WriteLine("{0} Shutdown", now.ToShortTimeString());
             tmrLog.Enabled = false;
@@ -32,6 +30,7 @@ namespace TimeLogger
 
         public void build()
         {
+            now = DateTime.Now;
             string currMonth = string.Format("{0:MMMM}", now);
             string currDay = string.Format("{0:dd}", now);
             string filename = string.Format("{0:hhmmss}", now);
@@ -53,13 +52,11 @@ namespace TimeLogger
         {
             if (changeDescription.Reason == SessionChangeReason.SessionLock)
             {
-                now = DateTime.Now;
                 build();
                 currFile.WriteLine("{0} Locked", now.ToShortTimeString());
             }
             else if (changeDescription.Reason == SessionChangeReason.SessionUnlock)
             {
-                now = DateTime.Now;
                 build();
                 currFile.WriteLine("{0} Unlocked", now.ToShortTimeString());
             }
@@ -67,7 +64,6 @@ namespace TimeLogger
 
         private void tmrLog_Tick(object sender, EventArgs e)
         {
-            now = DateTime.Now;
             build();
             currFile.WriteLine("{0} Still on", now.ToShortTimeString());
         }
