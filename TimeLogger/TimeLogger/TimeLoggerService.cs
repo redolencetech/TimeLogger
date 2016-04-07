@@ -4,11 +4,11 @@ using System.IO;
 
 namespace TimeLogger
 {
-    public partial class Service1 : ServiceBase
+    public partial class TimeLoggerService : ServiceBase
     {
         StreamWriter currFile;
         DateTime now;
-        public Service1()
+        public TimeLoggerService()
         {
             InitializeComponent();
         }
@@ -54,11 +54,13 @@ namespace TimeLogger
             {
                 build();
                 currFile.WriteLine("{0} Locked", now.ToShortTimeString());
+                tmrLog.Enabled = false;
             }
             else if (changeDescription.Reason == SessionChangeReason.SessionUnlock)
             {
                 build();
                 currFile.WriteLine("{0} Unlocked", now.ToShortTimeString());
+                tmrLog.Enabled = true;
             }
         }
 

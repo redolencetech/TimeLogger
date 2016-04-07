@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("TimeLogger")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ITS Deloitte")]
+[assembly: AssemblyCompany("Redolence Tech")]
 [assembly: AssemblyProduct("TimeLogger")]
-[assembly: AssemblyCopyright("Copyright © ITS Deloitte 2016")]
+[assembly: AssemblyCopyright("Copyright © Redolence Tech 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

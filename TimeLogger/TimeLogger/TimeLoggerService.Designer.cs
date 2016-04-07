@@ -1,6 +1,6 @@
 ﻿namespace TimeLogger
 {
-    partial class Service1
+    partial class TimeLoggerService
     {
         /// <summary> 
         /// Required designer variable.
@@ -35,9 +35,9 @@
             // 
             this.tmrLog.Tick += new System.EventHandler(this.tmrLog_Tick);
             // 
-            // Service1
+            // TimeLoggerService
             // 
-            this.ServiceName = "Service1";
+            this.ServiceName = "TimeLoggerService";
 
         }
 
