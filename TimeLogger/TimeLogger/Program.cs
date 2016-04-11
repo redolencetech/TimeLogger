@@ -14,12 +14,18 @@ namespace TimeLogger
         /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
+            var program = new TimeLoggerService();
+            if (Environment.UserInteractive)
             {
-                new TimeLoggerService()
-            };
-            ServiceBase.Run(ServicesToRun);
+                program.Start();
+            }
+            else
+            {
+                ServiceBase.Run(new ServiceBase[]
+                {
+                program
+                });
+            }
         }
     }
 }
