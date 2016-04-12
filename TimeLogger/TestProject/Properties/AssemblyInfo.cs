@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TimeLogger")]
+[assembly: AssemblyTitle("TestProject")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Redolence Tech")]
-[assembly: AssemblyProduct("TimeLogger")]
-[assembly: AssemblyCopyright("Copyright © Redolence Tech 2016")]
+[assembly: AssemblyCompany("ITS Deloitte")]
+[assembly: AssemblyProduct("TestProject")]
+[assembly: AssemblyCopyright("Copyright © ITS Deloitte 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ee9ac64d-a4dc-4ee3-b8e5-3e5969c0a5c0")]
+[assembly: Guid("736cfedd-b978-4b71-b976-23e9649f84df")]
 
 // Version information for an assembly consists of the following four values:
 //

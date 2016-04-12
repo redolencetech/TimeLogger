@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeLogger", "TimeLogger\TimeLogger.csproj", "{EE9AC64D-A4DC-4EE3-B8E5-3E5969C0A5C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{736CFEDD-B978-4B71-B976-23E9649F84DF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{A69D75E7-75DC-4627-93E7-6EC9B4DF2A79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,12 @@ Global
 		{EE9AC64D-A4DC-4EE3-B8E5-3E5969C0A5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE9AC64D-A4DC-4EE3-B8E5-3E5969C0A5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE9AC64D-A4DC-4EE3-B8E5-3E5969C0A5C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{736CFEDD-B978-4B71-B976-23E9649F84DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{736CFEDD-B978-4B71-B976-23E9649F84DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{736CFEDD-B978-4B71-B976-23E9649F84DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{736CFEDD-B978-4B71-B976-23E9649F84DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A69D75E7-75DC-4627-93E7-6EC9B4DF2A79}.Debug|Any CPU.ActiveCfg = Debug
+		{A69D75E7-75DC-4627-93E7-6EC9B4DF2A79}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
