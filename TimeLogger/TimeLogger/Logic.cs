@@ -12,6 +12,7 @@ namespace TimeLogger
     {
         static DateTime now;
         static string dailyFolder;
+        static string monthlyFolder;
         private static void buildPath(string inputPath)
         {
             FileInfo fileInfo = new FileInfo(inputPath);
@@ -48,7 +49,8 @@ namespace TimeLogger
             string currMonth = string.Format("{0:MMMM}", now);
             string currDay = string.Format("{0:dd}", now);
             string filename = string.Format("{0:HHmmss}", now);
-            dailyFolder = string.Format("C:\\Temp\\Timesheets\\{0}\\{1}", currMonth, currDay);
+            monthlyFolder = string.Format("C:\\Temp\\Timesheets\\{0}", currMonth);
+            dailyFolder = string.Format("{0}\\{1}", monthlyFolder, currDay);
             string filePath = string.Format("{0}\\Individual\\{1}.txt", dailyFolder, filename);
             string fileText = string.Format("{0} {1}", now.ToShortTimeString(), toWrite);
             buildPath(filePath);
@@ -81,15 +83,29 @@ namespace TimeLogger
             StringBuilder endString = new StringBuilder();
 
             endString.AppendLine("");
-            endString.AppendLine("---------------------------------");
+            endString.AppendLine("--------------------------------~");
             endString.AppendLine(string.Format("{0} - {1} hours, {2} minutes", timeDiff, timeDiff.Hours, timeDiff.Minutes));
 
             writeFile(dailySummaryFilename, endString.ToString());
+            summariseMonth();
         }
 
         private static void summariseMonth()
         {
+            var dirs = from dir in Directory.GetDirectories(monthlyFolder)
+                       orderby dir ascending
+                       select dir;
+            
+            string monthlySummaryFilename = string.Format("{0}\\{1}", monthlyFolder, string.Format("{0:MMMM}.txt", now));
+            File.Delete(monthlySummaryFilename);
 
+            foreach (var dir in dirs)
+            {
+                string tempFileName = Directory.GetFiles(dir).First();
+                string wholeFile = readFile(tempFileName, true);
+                string outString = string.Format("{0} - {1}", Path.GetFileNameWithoutExtension(tempFileName), wholeFile.Substring(wholeFile.IndexOf('~', 0), wholeFile.Length - wholeFile.IndexOf('~', 0)).Replace("~\r\n", ""));
+                writeFile(monthlySummaryFilename, outString);
+            }
         }
     }
 }
