@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ServiceProcess;
 using System.ComponentModel;
+using System.Timers;
 
 namespace TimeLogger
 {
     [RunInstallerAttribute(true)]
     public partial class TimeLoggerService : ServiceBase
     {
+        Timer tmrLog;
         public TimeLoggerService()
         {
             this.CanHandleSessionChangeEvent = true;
@@ -51,11 +53,13 @@ namespace TimeLogger
         public void Start()
         {
             Logic.writeOut("Startup");
-            tmrLog.Interval = 30000;
-            tmrLog.Enabled = true;
+            tmrLog = new Timer(300000D);
+            tmrLog.AutoReset = true;
+            tmrLog.Elapsed += new ElapsedEventHandler(tmrLog_Elapsed);
+            tmrLog.Start();
         }
 
-        private void tmrLog_Tick(object sender, EventArgs e)
+        private void tmrLog_Elapsed(object sender, ElapsedEventArgs e)
         {
             Logic.writeOut("Still on");
         }

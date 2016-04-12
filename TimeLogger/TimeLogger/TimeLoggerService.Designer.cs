@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tmrLog = new System.Windows.Forms.Timer(this.components);
-            // 
-            // tmrLog
-            // 
-            this.tmrLog.Tick += new System.EventHandler(this.tmrLog_Tick);
             // 
             // TimeLoggerService
             // 
@@ -42,7 +37,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer tmrLog;
     }
 }
