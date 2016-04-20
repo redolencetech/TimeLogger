@@ -2,7 +2,7 @@
 Windows time logging
 
 ## Background
-This module was written to make my own life easier - no one likes doing timesheets, but this automates the whole process by installing as a Windows service. 
+This module was written to make my own life easier - no one likes doing timesheets, but this automates the whole process by installing as a Windows service. This module writes all your timesheets to `C:\Temp\Timesheets\`.
 
 ##Logging activity
 It logs the following events:
