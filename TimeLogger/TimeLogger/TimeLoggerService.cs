@@ -1,7 +1,7 @@
-﻿using System;
-using System.ServiceProcess;
+﻿using System.ServiceProcess;
 using System.ComponentModel;
 using System.Timers;
+using System.Diagnostics;
 
 namespace TimeLogger
 {
@@ -61,7 +61,11 @@ namespace TimeLogger
 
         private void tmrLog_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Logic.writeOut("Still on");
+            Process currentProcess = WindowLogger.GetActiveProcess();
+            if (currentProcess != null)
+            {
+                Logic.writeOut(string.Format("Still on - {0} - {1}", currentProcess.ProcessName.ToString(), currentProcess.MainWindowTitle.ToString()));
+            }
         }
     }
 }
